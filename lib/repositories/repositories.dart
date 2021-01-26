@@ -1,0 +1,1 @@
+export 'product_api_client.dart';
