@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+//абстракция товара
 class Product extends Equatable {
 
   final int id;
@@ -24,8 +25,8 @@ class Product extends Equatable {
     image
   ];
 
-  static Product fromJson(dynamic json, int index) {
-    final consolidatedProduct = json['items'][index];
+  static Product fromJson(dynamic json) {
+    final consolidatedProduct = json['items'];
     return Product(
         id: consolidatedProduct['id'] as int,
         name: consolidatedProduct['name'] as String,
