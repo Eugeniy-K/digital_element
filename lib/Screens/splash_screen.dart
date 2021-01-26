@@ -13,6 +13,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+  final _bgcolor = Color(0xFF1C6CD5);
+
   @override
   void initState() {
     super.initState();
@@ -23,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Color(0xFF1C6CD5,),
+        color: _bgcolor,
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
