@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:equatable/equatable.dart';
 
 //абстракция товара
@@ -6,8 +8,8 @@ class Product extends Equatable {
   final int id;
   final String name;
   final double price;
-  final int article;
-  final Uri image;
+  final String article;
+  final String image;
 
   const Product({
     this.id,
@@ -26,13 +28,19 @@ class Product extends Equatable {
   ];
 
   static Product fromJson(dynamic json) {
-    final consolidatedProduct = json['items'];
     return Product(
-        id: consolidatedProduct['id'] as int,
-        name: consolidatedProduct['name'] as String,
-        price: consolidatedProduct['price'] as double,
-        article: consolidatedProduct['article'] as int,
-        image: consolidatedProduct['image'] as Uri
+        id: json['id'] == null? 0 : json['id'] as int,
+        name: json['name'] == null? 'n/a' : json['name'] as String,
+        price: checkPrice(json['price']),
+        article: json['article'] == null? 0 : json['article'] as String,
+        image: json['image'] == null? null : json['image'] as String
     );
+  }
+
+  static double checkPrice(dynamic json) {
+    if (json == null) return 0.0;
+    if (json is String) return double.parse(json);
+    if (json is int) return json.toDouble();
+    if (json is double) return json;
   }
 }

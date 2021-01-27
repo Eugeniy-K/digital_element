@@ -10,10 +10,13 @@ abstract class ProductState extends Equatable {
   List<Object> get props => [];
 }
 
+//начальное состояние
 class ProductInitial extends ProductState {}
 
+//состояние запроса
 class ProductLoadInProgress extends ProductState {}
 
+//загрузка прошла успешно
 class ProductLoadSuccess extends ProductState {
   final List<Product> products;
 
@@ -24,5 +27,6 @@ class ProductLoadSuccess extends ProductState {
   List<Object> get props => [products];
 }
 
+//загрузка не удалась
 class ProductLoadFailure extends ProductState {}
 

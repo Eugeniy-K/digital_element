@@ -1,26 +1,41 @@
 import 'dart:async';
+import 'package:digital_element/Screens/product_screen.dart';
+import 'package:digital_element/blocs/blocs.dart';
 import 'package:digital_element/main.dart';
+import 'package:digital_element/repositories/repositories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 
 
 //начальный экран с заставкой
 class SplashScreen extends StatefulWidget {
+  final ProductRepository productRepository;
+
+  const SplashScreen({Key key, this.productRepository}) : super(key: key);
+
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashScreenState createState() => _SplashScreenState(productRepository);
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
+  final ProductRepository productRepository;
   final _bgcolor = Color(0xFF1C6CD5);
+
+  _SplashScreenState(this.productRepository);
 
   @override
   void initState() {
     super.initState();
     Timer(Duration(seconds: 2),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => MyHomePage(title: 'Flutter Demo Home Page'))));
+            builder: (_) => BlocProvider(
+              create: (context) => ProductBloc(productRepository: productRepository),
+              child: ProductScreen(productRepository: productRepository),
+            ),
+        )));
   }
   @override
   Widget build(BuildContext context) {

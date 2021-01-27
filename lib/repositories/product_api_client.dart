@@ -19,8 +19,9 @@ class ProductApiClient {
     if (productResponse.statusCode != 200) {
       throw Exception('Что то пошло не так');
     }
-    var productJson = jsonDecode(productResponse.body) as List;
+    var productJson = jsonDecode(productResponse.body)['items'] as List;
     List<Product> products = productJson.map((prodJson) => Product.fromJson(prodJson)).toList();
+
     return products;
   }
 }
