@@ -2,6 +2,7 @@ import 'package:digital_element/models/models.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
+//класс состояний приложения
 abstract class ProductState extends Equatable {
   const ProductState();
 
