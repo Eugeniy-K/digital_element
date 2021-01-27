@@ -23,7 +23,11 @@ class _ProductWidgetState extends State<ProductWidget> {
           }
           if (state is ProductLoadSuccess) {
             final products = state.products;
-            return Text(products.toString());
+            return ListView.builder(
+              itemCount: products.length,
+              itemBuilder: (BuildContext context, int index) {
+                final product = products[index];
+              });              
           }
         }
     );
