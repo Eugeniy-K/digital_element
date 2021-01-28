@@ -25,7 +25,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           if (state is ProductLoadSuccess) {
             final products = state.products;
             return GridView.count(
-                childAspectRatio: ( 6/6 ),
+                childAspectRatio: ( 10/12 ),
                 crossAxisCount: 2,
                 children: List.generate(products.length, (index) {
                   final product = products[index];
