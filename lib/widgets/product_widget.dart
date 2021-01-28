@@ -1,4 +1,5 @@
 import 'package:digital_element/blocs/blocs.dart';
+import 'package:digital_element/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,11 +24,22 @@ class _ProductWidgetState extends State<ProductWidget> {
           }
           if (state is ProductLoadSuccess) {
             final products = state.products;
-            return ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (BuildContext context, int index) {
-                final product = products[index];
-              });              
+            return GridView.count(
+                childAspectRatio: ( 6/6 ),
+                crossAxisCount: 2,
+                children: List.generate(products.length, (index) {
+                  final product = products[index];
+                  return ProductItem(product: product);
+            })
+            );
+
+
+            // return ListView.builder(
+            //   itemCount: products.length,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     final product = products[index];
+            //     return ProductItem(product: product);
+            //   });              
           }
         }
     );
