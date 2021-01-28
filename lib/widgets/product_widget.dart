@@ -30,17 +30,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                 children: List.generate(products.length, (index) {
                   final product = products[index];
                   return ProductItem(product: product);
-            })
+                })
             );
-
-
-            // return ListView.builder(
-            //   itemCount: products.length,
-            //   itemBuilder: (BuildContext context, int index) {
-            //     final product = products[index];
-            //     return ProductItem(product: product);
-            //   });              
           }
+          else return Text('Что то пошло не так');
         }
     );
   }
