@@ -17,6 +17,11 @@ class _ProductWidgetState extends State<ProductWidget> {
   }
   @override
   Widget build(BuildContext context) {
+    //Размер окна приложения
+    var size = MediaQuery.of(context).size;
+
+    final double itemHeight = (size.height - kToolbarHeight - 300) / 2;
+    final double itemWidth = size.width / 2;
     return BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           if (state is ProductLoadInProgress) {
@@ -25,7 +30,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           if (state is ProductLoadSuccess) {
             final products = state.products;
             return GridView.count(
-                childAspectRatio: ( 10/12 ),
+                childAspectRatio: (itemWidth / itemHeight),
                 crossAxisCount: 2,
                 children: List.generate(products.length, (index) {
                   final product = products[index];
