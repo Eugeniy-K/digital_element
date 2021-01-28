@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:http/http.dart' as http;
 import 'package:digital_element/Screens/product_screen.dart';
 import 'package:digital_element/blocs/blocs.dart';
 import 'package:digital_element/main.dart';
@@ -12,19 +13,23 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 //начальный экран с заставкой
 class SplashScreen extends StatefulWidget {
-  final ProductRepository productRepository;
 
-  const SplashScreen({Key key, this.productRepository}) : super(key: key);
+  const SplashScreen({Key key}) : super(key: key);
+
 
   @override
-  _SplashScreenState createState() => _SplashScreenState(productRepository);
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final ProductRepository productRepository;
-  final _bgcolor = Color(0xFF1C6CD5);
 
-  _SplashScreenState(this.productRepository);
+  final _bgcolor = Color(0xFF1C6CD5);
+  final ProductRepository productRepository = ProductRepository(
+      productApiClient: ProductApiClient(
+        httpClient: http.Client(),
+      ));
+
+
 
   @override
   void initState() {

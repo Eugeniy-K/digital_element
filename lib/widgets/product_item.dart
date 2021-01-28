@@ -12,7 +12,7 @@ class ProductItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(10.0)
+        borderRadius: BorderRadius.circular(10.0),
       ),
 
       margin: EdgeInsets.all(5.0),
