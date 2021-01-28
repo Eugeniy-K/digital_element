@@ -12,7 +12,12 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Список товаров'),
+        backgroundColor: Colors.grey[200],
+        title: Text(
+            'Список товаров',
+            style: TextStyle(
+              color: Colors.black
+            ),),
         centerTitle: true,
       ),
       body: BlocProvider(
